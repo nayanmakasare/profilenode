@@ -12,7 +12,7 @@ herosSchema.statics = {
     },
 
     getByName: function(query, cb) {
-        this.find(query, cb);
+        this.findOne(query, cb);
     },
 
     update: function(query, updateData, cb) {
@@ -21,6 +21,14 @@ herosSchema.statics = {
 
     delete: function(query, cb) {
         this.findOneAndDelete(query,cb);
+    },
+
+    addNewDevice: function(query, tvInfoData , cb){
+        this.findOneAndUpdate(query, {$push : tvInfoData}, cb);
+    },
+
+    removeLinkDevice: function(query, tvInfoData , cb){
+        this.findOneAndUpdate(query,{$pull: {linkedDevices: tvInfoData}},cb);
     }
 }
 

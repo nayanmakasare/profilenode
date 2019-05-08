@@ -1,23 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var herosSchema = new Schema({
-//     name :{
-//         type: String,
-//         unique : false,
-//         required : true
-//     },
-//     description : {
-//         type: String,
-//         unique : false,
-//         required : true
-//     }
-// }, {
-//     timestamps: true
-// });
-
-// module.exports = herosSchema;
-
-
+var TvInfo = require('./profile.tvInfo');
 
 var profileSchema = new Schema
 ({
@@ -28,6 +11,9 @@ var profileSchema = new Schema
         type : String 
     },
     dob : {
+        type : String 
+    },
+    imageUrl : {
         type : String 
     },
     mobileNumber : {
@@ -55,17 +41,7 @@ var profileSchema = new Schema
         }
     ],
     linkedDevices : [
-        {
-            emac : {
-                type : String
-            },
-            boardName : {
-                type : String
-            },
-            panelName : {
-                type : String
-            }
-        }
+        TvInfo
     ]
 });
 
